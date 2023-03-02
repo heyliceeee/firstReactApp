@@ -42,7 +42,7 @@ const Footer = () => {
                 <Col span={5}>
                     <Title level={3}>Follow Us</Title>
 
-                    <Row>
+                    <Space direction="vertical">
                         <Tag icon={<InstagramOutlined />} color="#C13584"> Instagram</Tag>
                         <Tag icon={<YoutubeOutlined />} color="#cd201f"> Youtube</Tag>
                         <Tag icon={<TwitterOutlined />} color="#55acee"> Twitter</Tag>
@@ -62,7 +62,7 @@ const Footer = () => {
                         <Col style={{padding: "0px 0px 0px 0px"}} xs={20} sm={15} md={10} lg={5}>
                             <Button type="primary" icon={<FacebookFilled />}/>
                         </Col> */}
-                    </Row>
+                    </Space>
                 </Col>
             </Row>
 
