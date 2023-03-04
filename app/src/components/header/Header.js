@@ -1,21 +1,10 @@
-import React from 'react';
 import './Header.css';
-import { Col, Row, Typography, Space, Divider, Tag, Image, Button, Dropdown, message, Tooltip, Input, Select, Badge, Avatar } from 'antd';
-import { DownOutlined, UserOutlined, LaptopOutlined, SearchOutlined, HeartOutlined } from '@ant-design/icons';
+import { Col, Row, Typography, Image, Input, Select, Badge, Space, Avatar, Dropdown, Divider } from 'antd';
+import { SearchOutlined, HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-
-
-const handleButtonClick = (e) => {
-    message.info('Click on left button.');
-    console.log('click left button', e);
-};
-
-const handleMenuClick = (e) => {
-    message.info('Click on menu item.');
-    console.log('click', e);
-};
 
 const selectBefore = (
     <Select defaultValue="All Categories">
@@ -23,9 +12,37 @@ const selectBefore = (
       <Option value="laptop">Laptop</Option>
       <Option value="phoneCases">Phone Cases</Option>
     </Select>
-  );
+);
+
+const items = [
+    {
+      key: '1',
+      label: (<a target="_blank" rel="noopener noreferrer" href="#">Create account</a>)
+    },
+    {
+      key: '2',
+      label: (<a target="_blank" rel="noopener noreferrer" href="#">Sign In</a>)
+    },
+    {
+        key: '3',
+        label: (<a target="_blank" rel="noopener noreferrer" href="#">Settings</a>),
+        disabled: true
+      },
+    {
+      key: '4',
+      label: (<a target="_blank" rel="noopener noreferrer" href="#">Sign Out</a>),
+      danger: true,
+      disabled: true
+    },
+];
 
 const Header = () => {
+    const [show, setShow] = useState(true);
+
+    const onChange = (checked) => {
+        setShow(checked);
+    };
+
     return (
         <div>
             <Row justify="space-around">
@@ -35,20 +52,33 @@ const Header = () => {
             </Row>
 
             <Row justify="space-around">
-                <Col span={1}>
-                    <Image preview={false} width={33} src="https://assets-global.website-files.com/5fd0f5e4883524ed0fc88323/604a38b95b75d0fb380b301e_logo_default.svg" />
-                </Col>
-
-                <Col span={14}>
-                    <Input addonBefore={selectBefore} placeholder="Search" addonAfter={<SearchOutlined />}/>
-                </Col>
-
                 <Col span={5}>
-                <a href="#">
-                    <Badge count={5}>
-                    <Avatar shape="square" size="large" />
-                    </Badge>
-                </a>
+                    <Title level={5}>HEYLICEEEE'S STORE</Title>
+                </Col>
+
+
+                <Col span={13}>
+                    <Input addonBefore={selectBefore} placeholder="Search Product" addonAfter={<SearchOutlined />}/>
+                </Col>
+
+                <Divider type="vertical" />
+
+                <Col span={2} align="end">
+                    <Space direction="horizontal">
+                        <a href="#">
+                            <Badge dot={show}><HeartOutlined style={{fontSize: 20, verticalAlign: 'middle',}}/></Badge>
+                        </a>
+
+                        <a href="#">
+                            <Badge dot={show}><ShoppingCartOutlined style={{fontSize: 20, verticalAlign: 'middle',}}/></Badge>
+                        </a>
+
+                        <Divider type="vertical" />
+
+                        <Dropdown placement="topRight" menu={{items,}}>
+                            <Avatar size="default" icon={<UserOutlined />} />
+                        </Dropdown>
+                    </Space>
                 </Col>
             </Row>
         </div>

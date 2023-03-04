@@ -1,7 +1,10 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom';
+//import {Routes, Route} from 'react-router-dom';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import React, {useState} from 'react';
+
+
 
 function App() {
   return (
