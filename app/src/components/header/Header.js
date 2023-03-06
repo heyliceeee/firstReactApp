@@ -1,6 +1,6 @@
 import './Header.css';
-import { Col, Row, Typography, Image, Input, Select, Badge, Space, Avatar, Dropdown, Divider } from 'antd';
-import { SearchOutlined, HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { Col, Row, Typography, Image, Input, Select, Badge, Space, Avatar, Dropdown, Divider, Button } from 'antd';
+import { SearchOutlined, HeartOutlined, ShoppingCartOutlined, UserOutlined, HeartFilled } from '@ant-design/icons';
 import { useState } from 'react';
 
 const { Title, Text } = Typography;
@@ -53,9 +53,12 @@ const Header = () => {
 
             <Row justify="space-around">
                 <Col span={5}>
-                    <Title level={5}>HEYLICEEEE'S STORE</Title>
+                    <Space direction="horizontal">
+                        <Button type="primary" icon={<HeartFilled />}>HEYLICEEEE'S STORE</Button>
+                    </Space>
                 </Col>
 
+                <Divider type="vertical" />
 
                 <Col span={13}>
                     <Input addonBefore={selectBefore} placeholder="Search Product" addonAfter={<SearchOutlined />}/>
